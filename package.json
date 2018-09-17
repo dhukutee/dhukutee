@@ -1,0 +1,35 @@
+{
+  "name": "dhukutee",
+  "version": "0.0.1",
+  "description": "Dhukutee is a platform to create financial literacy among Nepalese people. It is going to be awesome.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "server": "node server.js",
+    "build": "next build",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/punitjajodia/dhukutee.git"
+  },
+  "keywords": [
+    "ghukutee"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/punitjajodia/dhukutee/issues"
+  },
+  "homepage": "https://github.com/punitjajodia/dhukutee#readme",
+  "dependencies": {
+    "firebase": "^5.5.0",
+    "next": "^6.1.2",
+    "next-routes": "^1.4.2",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-render-html": "^0.6.0",
+    "string-replace-async": "^1.2.1",
+    "wysiwyg-editor-node-sdk": "^2.3.4"
+  }
+}
