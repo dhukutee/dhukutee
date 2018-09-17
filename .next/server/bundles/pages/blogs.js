@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -145,289 +145,6 @@ function (_PureComponent) {
 
   return ArticleFull;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["PureComponent"]);
-
-
-
-/***/ }),
-
-/***/ "./components/WriteArticle.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WriteArticle; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("@babel/runtime/regenerator");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_customReplace__ = __webpack_require__("./helpers/customReplace.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ArticleFull__ = __webpack_require__("./components/ArticleFull.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__helpers_firebase__ = __webpack_require__("./helpers/firebase.js");
-
-var _jsxFileName = "/Users/muskan/JavaScriptProjects/dhukutee/components/WriteArticle.js";
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-
-
-
-
-
-var WriteArticle =
-/*#__PURE__*/
-function (_PureComponent) {
-  _inherits(WriteArticle, _PureComponent);
-
-  function WriteArticle() {
-    var _ref;
-
-    var _temp, _this;
-
-    _classCallCheck(this, WriteArticle);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_ref = WriteArticle.__proto__ || Object.getPrototypeOf(WriteArticle)).call.apply(_ref, [this].concat(args))), Object.defineProperty(_assertThisInitialized(_this), "state", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {
-        url: '',
-        title: '',
-        message: ''
-      }
-    }), Object.defineProperty(_assertThisInitialized(_this), "pushBlog", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        if (_this.state.title == '' || _this.state.title == null) {
-          alert('Title is empty');
-        } else if (_this.state.message == '' || _this.state.message == null) {
-          alert('Content is empty');
-        } else if (_this.state.url == '' || _this.state.url == null) {
-          alert('URL is empty');
-        } else {
-          Object(__WEBPACK_IMPORTED_MODULE_4__helpers_firebase__["a" /* addABlog */])(_this.state);
-        }
-      }
-    }), _temp));
-  }
-
-  _createClass(WriteArticle, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
-        style: {
-          flexDirection: 'row',
-          flex: 'grow'
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 27
-        }
-      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 28
-        }
-      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("h1", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 29
-        }
-      }, "Editor"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("hr", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 30
-        }
-      }), "URL:", __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 32
-        }
-      }), "https://dhukutee.com/blogs/", __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("input", {
-        type: "text",
-        id: "url",
-        onChange: function onChange(event) {
-          _this2.setState({
-            url: event.target.value
-          });
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 33
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 42
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 43
-        }
-      }), "Title:", __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 45
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("input", {
-        type: "text",
-        id: "title",
-        onChange: function onChange(event) {
-          _this2.setState({
-            title: event.target.value
-          });
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 46
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 55
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 56
-        }
-      }), "Details:", __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 58
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("textarea", {
-        id: "detail",
-        onChange:
-        /*#__PURE__*/
-        function () {
-          var _ref2 = _asyncToGenerator(
-          /*#__PURE__*/
-          __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(event) {
-            return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    _context.t0 = _this2;
-                    _context.next = 3;
-                    return Object(__WEBPACK_IMPORTED_MODULE_2__helpers_customReplace__["a" /* customReplace */])(event.target.value);
-
-                  case 3:
-                    _context.t1 = _context.sent;
-                    _context.t2 = {
-                      message: _context.t1
-                    };
-
-                    _context.t0.setState.call(_context.t0, _context.t2);
-
-                  case 6:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee, this);
-          }));
-
-          return function (_x) {
-            return _ref2.apply(this, arguments);
-          };
-        }(),
-        style: {
-          width: '50%',
-          height: '300px'
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 59
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 71
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 72
-        }
-      }), "Featured Image:", __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 74
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("input", {
-        type: "file",
-        id: "image",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 75
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 76
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 77
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("input", {
-        type: "submit",
-        value: "Post",
-        onClick: function onClick() {
-          return _this2.pushBlog();
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 78
-        }
-      })), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("h1", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 81
-        }
-      }, "Live Preview"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("hr", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 82
-        }
-      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__ArticleFull__["a" /* default */], {
-        blog: this.state,
-        style: {
-          flex: 1
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 84
-        }
-      }));
-    }
-  }]);
-
-  return WriteArticle;
-}(__WEBPACK_IMPORTED_MODULE_1_react__["PureComponent"]);
 
 
 
@@ -595,34 +312,90 @@ function _getValueAt() {
 
 /***/ }),
 
-/***/ "./pages/ContentWriting.js":
+/***/ "./pages/blogs.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helpers_firebase__ = __webpack_require__("./helpers/firebase.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_WriteArticle__ = __webpack_require__("./components/WriteArticle.js");
-var _jsxFileName = "/Users/muskan/JavaScriptProjects/dhukutee/pages/ContentWriting.js";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("@babel/runtime/regenerator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_firebase__ = __webpack_require__("./helpers/firebase.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ArticleFull__ = __webpack_require__("./components/ArticleFull.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__helpers_customReplace__ = __webpack_require__("./helpers/customReplace.js");
+
+var _jsxFileName = "/Users/muskan/JavaScriptProjects/dhukutee/pages/blogs.js";
+
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (function () {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_WriteArticle__["a" /* default */], {
+
+
+var Blog = function Blog(props) {
+  return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 4
+      lineNumber: 7
     }
-  });
-});
+  }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_ArticleFull__["a" /* default */], {
+    blog: props.blog,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    }
+  }));
+};
+
+Blog.getInitialProps =
+/*#__PURE__*/
+function () {
+  var _ref2 = _asyncToGenerator(
+  /*#__PURE__*/
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(_ref) {
+    var query, blog;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            query = _ref.query;
+            _context.next = 3;
+            return Object(__WEBPACK_IMPORTED_MODULE_2__helpers_firebase__["b" /* getABlog */])(query.slug);
+
+          case 3:
+            blog = _context.sent;
+            _context.next = 6;
+            return Object(__WEBPACK_IMPORTED_MODULE_4__helpers_customReplace__["a" /* customReplace */])(blog.message);
+
+          case 6:
+            blog.message = _context.sent;
+            return _context.abrupt("return", {
+              blog: blog
+            });
+
+          case 8:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, this);
+  }));
+
+  return function (_x) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Blog);
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./pages/ContentWriting.js");
+module.exports = __webpack_require__("./pages/blogs.js");
 
 
 /***/ }),
@@ -663,4 +436,4 @@ module.exports = require("string-replace-async");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=ContentWriting.js.map
+//# sourceMappingURL=blogs.js.map

@@ -10,6 +10,7 @@ export default class ArticleFull extends PureComponent {
           margin: '20px'
         }}
       >
+        <img src={this.props.imageUrl} />
         <h1>{this.props.blog.title}</h1>
         <p>{renderHTML(this.props.blog.message)}</p>
       </div>

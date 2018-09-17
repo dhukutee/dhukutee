@@ -9,7 +9,7 @@ export default () => (
     to write new blog
     <br />
     Click{' '}
-    <Link href='/blog/first-blog'>
+    <Link href='/blogs/hello_world'>
       <a>here</a>
     </Link>{' '}
     to read a blog
