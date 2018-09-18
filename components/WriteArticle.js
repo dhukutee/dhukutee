@@ -8,7 +8,8 @@ export default class WriteArticle extends PureComponent {
     url: '',
     title: '',
     message: '',
-  };
+    rawMessage: ''
+  }
 
   pushBlog = () => {
     if (this.state.title == '' || this.state.title == null) {
@@ -18,7 +19,18 @@ export default class WriteArticle extends PureComponent {
     } else if (this.state.url == '' || this.state.url == null) {
       alert('URL is empty');
     } else {
-      addABlog(this.state);
+
+      addABlog({
+        url: this.state.url,
+        title: this.state.title,
+        message: this.state.rawMessage
+      })
+        .then(() => {
+          window.location = `/blogs/${this.state.url}`
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   };
 

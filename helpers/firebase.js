@@ -18,7 +18,7 @@ if (!firebase.apps.length) {
 
 // add a blog detail from the firebase database
 export function addABlog (blog) {
-  firebase.database().ref('blogs/' + blog.url).set(blog)
+  return firebase.database().ref('blogs/' + blog.url).set(blog)
 }
 
 // gets the blog detail from the firebase database with provided slug
@@ -30,6 +30,16 @@ export function getABlog (slug) {
     .then(function (snapshot) {
       return snapshot.val()
     })
+}
+
+// get all blogs from the database, in future we can pull blogs with tag homepage
+export async function getAllBlog () {
+  const snapshot = await firebase.database().ref('blogs').once('value')
+  const blogs = []
+  snapshot.forEach(blog => {
+    blogs.push(blog.val())
+  })
+  return blogs
 }
 
 // returns the value of the provided path from firebase database

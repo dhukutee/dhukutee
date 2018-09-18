@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Page from './layouts/main';
+import { getAllBlog } from '../helpers/firebase'
 
-export default () => (
+const Home = props => (
   <Page>
     <div class="hero">
       <h2>Financial Information at your fingertips!</h2>
@@ -10,16 +11,22 @@ export default () => (
         financial decisions.
       </h4>
     </div>
-    Click{' '}
-    <Link href="/admin/write">
-      <a>here</a>
-    </Link>{' '}
-    to write new blog
-    <br />
-    Click{' '}
-    <Link href="/blogs/hello_world">
-      <a>here</a>
-    </Link>{' '}
-    to read a blog
+   <div>
+    <h1>Blogs</h1>
+    <ul>
+      {props.blogs.map(blog => 
+         <li><a href={`/blogs/${blog.url}`}>{blog.title}</a></li>
+      )}
+    </ul>
+  </div>
   </Page>
 );
+
+
+Home.getInitialProps = async () => {
+  // fetching the blog data from database before rendering the screen
+  const blogs = await getAllBlog()
+  return { blogs }
+}
+
+export default Home
