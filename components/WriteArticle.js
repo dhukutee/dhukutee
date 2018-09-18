@@ -7,7 +7,8 @@ export default class WriteArticle extends PureComponent {
   state = {
     url: '',
     title: '',
-    message: ''
+    message: '',
+    rawMessage: ''
   }
 
   pushBlog = () => {
@@ -18,7 +19,17 @@ export default class WriteArticle extends PureComponent {
     } else if (this.state.url == '' || this.state.url == null) {
       alert('URL is empty')
     } else {
-      addABlog(this.state)
+      addABlog({
+        url: this.state.url,
+        title: this.state.title,
+        message: this.state.rawMessage
+      })
+        .then(() => {
+          window.location = `/blogs/${this.state.url}`
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 
@@ -59,8 +70,11 @@ export default class WriteArticle extends PureComponent {
           <textarea
             id='detail'
             onChange={async event => {
+              const rawMessage = event.target.value
+              const message = await customReplace(rawMessage)
               this.setState({
-                message: await customReplace(event.target.value)
+                message,
+                rawMessage
               })
             }}
             style={{
