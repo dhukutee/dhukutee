@@ -18,7 +18,7 @@ if (!firebase.apps.length) {
 
 // add a blog detail from the firebase database
 export function addABlog (blog) {
-  firebase.database().ref('blogs/' + blog.url).set(blog)
+  return firebase.database().ref('blogs/' + blog.url).set(blog)
 }
 
 // gets the blog detail from the firebase database with provided slug
