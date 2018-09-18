@@ -32,6 +32,16 @@ export function getABlog (slug) {
     })
 }
 
+// get all blogs from the database, in future we can pull blogs with tag homepage
+export async function getAllBlog () {
+  const snapshot = await firebase.database().ref('blogs').once('value')
+  const blogs = []
+  snapshot.forEach(blog => {
+    blogs.push(blog.val())
+  })
+  return blogs
+}
+
 // returns the value of the provided path from firebase database
 export async function getValueAt (path) {
   const snapshot = await firebase.database().ref(path).once('value')
