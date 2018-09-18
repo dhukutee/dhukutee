@@ -1,17 +1,21 @@
 import Link from 'next/link'
+import { getAllBlog } from '../helpers/firebase'
 
-export default () => (
+const Home = props => (
   <div>
-    Click{' '}
-    <Link href='/ContentWriting'>
-      <a>here</a>
-    </Link>{' '}
-    to write new blog
-    <br />
-    Click{' '}
-    <Link href='/blogs/hello_world'>
-      <a>here</a>
-    </Link>{' '}
-    to read a blog
+    <h1>Blogs</h1>
+    <ul>
+      {props.blogs.map(blog => 
+         <li><a href={`/blogs/${blog.url}`}>{blog.title}</a></li>
+      )}
+    </ul>
   </div>
 )
+
+Home.getInitialProps = async () => {
+  // fetching the blog data from database before rendering the screen
+  const blogs = await getAllBlog()
+  return { blogs }
+}
+
+export default Home
