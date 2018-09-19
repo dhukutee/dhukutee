@@ -64,8 +64,6 @@ export default class WriteArticle extends PureComponent {
         })
       })
       .catch(err => {
-        console.log(err)
-
         this.setState({
           icon_reference: null,
           icon_url: null
@@ -137,16 +135,16 @@ export default class WriteArticle extends PureComponent {
                 onChange={event =>
                     this.uploadFeaturedImage(event.target.files[0])}
                 />
-              : <img
-                src={this.state.image_url}
-                width='100%'
+              : <button
                 onClick={() => {
                   this.setState({
                     image_url: null,
                     image_reference: null
                   })
                 }}
-                />}
+                >
+                  Remove Attachment
+                </button>}
             <br />
             <br />
             <br />

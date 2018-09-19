@@ -17,6 +17,12 @@ export default class ArticleFull extends PureComponent {
     })
   }
 
+  componentWillReceiveProps (new_props) {
+    if (this.props.blog.image_reference != new_props.blog.image_reference) {
+      this.getImageUrl(new_props.blog.image_reference)
+    }
+  }
+
   render () {
     return (
       <div
@@ -26,7 +32,12 @@ export default class ArticleFull extends PureComponent {
         }}
       >
         <h1>{this.props.blog.title}</h1>
-        <img src={this.state.image_url} style={styles.featuredImage} />
+        <br />
+        <img
+          src={this.state.image_url}
+          style={styles.featuredImage}
+          width='50%'
+        />
         <p>{renderHTML(this.props.blog.message)}</p>
       </div>
     )
@@ -35,6 +46,6 @@ export default class ArticleFull extends PureComponent {
 
 const styles = {
   featuredImage: {
-    widht: '100%',
+    widht: '100%'
   }
 }

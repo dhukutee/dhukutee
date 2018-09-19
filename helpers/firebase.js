@@ -40,7 +40,7 @@ export async function uploadFile (file) {
 }
 
 export function getDownloadUrl (ref) {
-  return firebase.storage().ref().child(ref).getDownloadURL()
+  if (ref != null && ref != '') { return firebase.storage().ref().child(ref).getDownloadURL() } else return ''
 }
 
 // get all blogs from the database, in future we can pull blogs with tag homepage
