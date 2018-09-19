@@ -1,14 +1,18 @@
 import React, { PureComponent } from 'react'
 import { customReplace } from '../helpers/customReplace'
 import ArticleFull from './ArticleFull'
-import { addABlog } from '../helpers/firebase'
+import { addABlog, uploadFile, getDownloadUrl } from '../helpers/firebase'
 
 export default class WriteArticle extends PureComponent {
   state = {
     url: '',
     title: '',
     message: '',
-    rawMessage: ''
+    raw_message: '',
+    icon_url: null,
+    icon_reference: null,
+    image_url: null,
+    image_reference: null
   }
 
   pushBlog = () => {
@@ -22,7 +26,9 @@ export default class WriteArticle extends PureComponent {
       addABlog({
         url: this.state.url,
         title: this.state.title,
-        message: this.state.rawMessage
+        message: this.state.raw_message,
+        icon_reference: this.state.icon_reference,
+        image_reference: this.state.image_reference
       })
         .then(() => {
           window.location = `/blogs/${this.state.url}`
@@ -33,10 +39,44 @@ export default class WriteArticle extends PureComponent {
     }
   }
 
+  uploadFeaturedImage = file => {
+    uploadFile(file)
+      .then(async res => {
+        this.setState({
+          image_reference: res,
+          image_url: await getDownloadUrl(res)
+        })
+      })
+      .catch(err => {
+        this.setState({
+          image_reference: null,
+          image_url: null
+        })
+      })
+  }
+
+  uploadArticleIcon = file => {
+    uploadFile(file)
+      .then(async res => {
+        this.setState({
+          icon_reference: res,
+          icon_url: await getDownloadUrl(res)
+        })
+      })
+      .catch(err => {
+        console.log(err)
+
+        this.setState({
+          icon_reference: null,
+          icon_url: null
+        })
+      })
+  }
+
   render () {
     return (
       <div style={{ flexDirection: 'row', display: 'flex' }}>
-        <div style={{ flex: 1, padding:10 }}>
+        <div style={{ flex: 1, padding: 10 }}>
           <div>
             <h1>Editor</h1>
             <hr />
@@ -69,7 +109,45 @@ export default class WriteArticle extends PureComponent {
             <br />
             Article Icon:
             <br />
-            <input type='file' id='icon' />
+            {this.state.icon_url == null
+              ? <input
+                type='file'
+                id='icon'
+                onChange={event =>
+                    this.uploadArticleIcon(event.target.files[0])}
+                />
+              : <img
+                src={this.state.icon_url}
+                height={60}
+                onClick={() => {
+                  this.setState({
+                    icon_url: null,
+                    icon_reference: null
+                  })
+                }}
+                />}
+            <br />
+            <br />
+            Featured Image:
+            <br />
+            {this.state.image_url == null
+              ? <input
+                type='file'
+                id='image'
+                onChange={event =>
+                    this.uploadFeaturedImage(event.target.files[0])}
+                />
+              : <img
+                src={this.state.image_url}
+                width='100%'
+                onClick={() => {
+                  this.setState({
+                    image_url: null,
+                    image_reference: null
+                  })
+                }}
+                />}
+            <br />
             <br />
             <br />
             Details:
@@ -78,6 +156,7 @@ export default class WriteArticle extends PureComponent {
               id='detail'
               onChange={async event => {
                 this.setState({
+                  raw_message: event.target.value,
                   message: await customReplace(event.target.value)
                 })
               }}
@@ -88,15 +167,11 @@ export default class WriteArticle extends PureComponent {
             />
             <br />
             <br />
-            Featured Image:
-            <br />
-            <input type='file' id='image' />
-            <br />
-            <br />
+
             <input type='submit' value='Post' onClick={() => this.pushBlog()} />
           </div>
         </div>
-        <div style={{ flex: 1, padding:10 }}>
+        <div style={{ flex: 1, padding: 10 }}>
           <h1>Live Preview</h1>
           <hr />
           {/* live preivew of the article */}
