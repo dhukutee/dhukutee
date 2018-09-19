@@ -1,6 +1,6 @@
 export default () => (
-  <footer class="footer-wrapper">
-    <div class="footer-menu">
+  <footer className='footer-wrapper'>
+    <div className='footer-menu'>
       <ul>
         Home Loan
         <li>NIBL Home Loan</li>
@@ -45,13 +45,13 @@ export default () => (
       </ul>
     </div>
 
-    <ul class="about-contact">
+    <ul className='about-contact'>
       <li>About</li> <li>Careers</li> <li>Contact Us</li> <li>Blog</li>{' '}
       <li>Terms</li> <li>Notice to Customer</li>
     </ul>
 
-    <div class="copyright">
-      Copyright &copy; 2018 Dhukutee.com Privacy Policy
+    <div className='copyright'>
+      Copyright © 2018 Dhukutee.com Privacy Policy
     </div>
   </footer>
-);
+)

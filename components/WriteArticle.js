@@ -36,7 +36,7 @@ export default class WriteArticle extends PureComponent {
   render () {
     return (
       <div style={{ flexDirection: 'row', display: 'flex' }}>
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1, padding:10 }}>
           <div>
             <h1>Editor</h1>
             <hr />
@@ -67,6 +67,11 @@ export default class WriteArticle extends PureComponent {
             />
             <br />
             <br />
+            Article Icon:
+            <br />
+            <input type='file' id='icon' />
+            <br />
+            <br />
             Details:
             <br />
             <textarea
@@ -91,7 +96,7 @@ export default class WriteArticle extends PureComponent {
             <input type='submit' value='Post' onClick={() => this.pushBlog()} />
           </div>
         </div>
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1, padding:10 }}>
           <h1>Live Preview</h1>
           <hr />
           {/* live preivew of the article */}
