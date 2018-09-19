@@ -1,5 +1,6 @@
 import { getAllBlog } from '../helpers/firebase'
 import Page from './layouts/main'
+import ArticleTile from '../components/ArticleTile'
 
 const Home = props => (
   <Page>
@@ -11,12 +12,7 @@ const Home = props => (
       </h4>
     </div>
     <ul className='choices'>
-      {props.blogs.map(blog => (
-        <li key={blog.url}>
-          <img src={blog.icon} height='60' />
-          <span>{blog.title}</span>
-        </li>
-      ))}
+      {props.blogs.map(blog => <ArticleTile blog={blog} key={blog.url} />)}
     </ul>
   </Page>
 )
