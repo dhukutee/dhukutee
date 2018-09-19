@@ -32,6 +32,17 @@ export function getABlog (slug) {
     })
 }
 
+export async function uploadFile (file) {
+  var storageRef = firebase.storage().ref()
+  var imageRef = storageRef.child(`images/${file.name}`)
+  await imageRef.put(file)
+  return imageRef.fullPath
+}
+
+export function getDownloadUrl (ref) {
+  if (ref != null && ref != '') { return firebase.storage().ref().child(ref).getDownloadURL() } else return ''
+}
+
 // get all blogs from the database, in future we can pull blogs with tag homepage
 export async function getAllBlog () {
   const snapshot = await firebase.database().ref('blogs').once('value')

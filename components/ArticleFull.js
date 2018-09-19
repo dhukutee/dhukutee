@@ -1,7 +1,28 @@
 import React, { PureComponent } from 'react'
 import renderHTML from 'react-render-html'
+import { getDownloadUrl } from '../helpers/firebase'
 
 export default class ArticleFull extends PureComponent {
+  state = {
+    image_url: ''
+  }
+
+  componentDidMount () {
+    this.getImageUrl(this.props.blog.image_reference)
+  }
+
+  async getImageUrl (image_ref) {
+    this.setState({
+      image_url: await getDownloadUrl(image_ref)
+    })
+  }
+
+  componentWillReceiveProps (new_props) {
+    if (this.props.blog.image_reference != new_props.blog.image_reference) {
+      this.getImageUrl(new_props.blog.image_reference)
+    }
+  }
+
   render () {
     return (
       <div
@@ -10,10 +31,21 @@ export default class ArticleFull extends PureComponent {
           margin: '20px'
         }}
       >
-        <img src={this.props.imageUrl} />
         <h1>{this.props.blog.title}</h1>
+        <br />
+        <img
+          src={this.state.image_url}
+          style={styles.featuredImage}
+          width='50%'
+        />
         <p>{renderHTML(this.props.blog.message)}</p>
       </div>
     )
+  }
+}
+
+const styles = {
+  featuredImage: {
+    widht: '100%'
   }
 }
