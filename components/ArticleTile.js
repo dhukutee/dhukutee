@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { getDownloadUrl } from '../helpers/firebase'
+import Router from 'next/router'
 
 export default class ArticleTile extends PureComponent {
   state = {
@@ -17,11 +18,11 @@ export default class ArticleTile extends PureComponent {
   }
 
   render () {
-    const blog = this.props.blog
+    const {blog} = this.props
     return (
       <li
         onClick={() => {
-          window.location.href = `/blogs/${blog.url}`
+          Router.push(`/blogs/${blog.url}`)
         }}
       >
         <img src={this.state.icon_url} height='60' />

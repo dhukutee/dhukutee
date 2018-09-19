@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { customReplace } from '../helpers/customReplace'
 import ArticleFull from './ArticleFull'
 import { addABlog, uploadFile, getDownloadUrl } from '../helpers/firebase'
+import Router from 'next/router'
 
 export default class WriteArticle extends PureComponent {
   state = {
@@ -30,8 +31,8 @@ export default class WriteArticle extends PureComponent {
         icon_reference: this.state.icon_reference,
         image_reference: this.state.image_reference
       })
-        .then(() => {
-          window.location = `/blogs/${this.state.url}`
+        .then( ()=> {
+          Router.push(`/blogs/${this.state.url}`)
         })
         .catch(err => {
           console.log(err)
