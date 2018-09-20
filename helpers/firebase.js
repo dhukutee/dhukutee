@@ -24,6 +24,14 @@ export function addABlog(blog) {
     .set(blog);
 }
 
+// removes a blog from the firebase database
+export function deleteABlog(slug) {
+  return firebase
+    .database()
+    .ref("blogs/" + slug)
+    .remove();
+}
+
 // gets the blog detail from the firebase database with provided slug
 export function getABlog(slug) {
   return firebase
@@ -35,15 +43,23 @@ export function getABlog(slug) {
     });
 }
 
-export async function uploadFile (file) {
-  var storageRef = firebase.storage().ref()
-  var imageRef = storageRef.child(`images/${file.name}`)
-  await imageRef.put(file)
-  return imageRef.fullPath
+//uploads a file to firebase storage
+export async function uploadFile(file) {
+  var storageRef = firebase.storage().ref();
+  var imageRef = storageRef.child(`images/${file.name}`);
+  await imageRef.put(file);
+  return imageRef.fullPath;
 }
 
-export function getDownloadUrl (ref) {
-  if (ref != null && ref != '') { return firebase.storage().ref().child(ref).getDownloadURL() } else return ''
+//fetchs the download link from firebase storage for a file reference
+export function getDownloadUrl(ref) {
+  if (ref != null && ref != "") {
+    return firebase
+      .storage()
+      .ref()
+      .child(ref)
+      .getDownloadURL();
+  } else return "";
 }
 
 // get all blogs from the database, in future we can pull blogs with tag homepage
