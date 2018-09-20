@@ -1,4 +1,5 @@
-import Head from 'next/head';
+import Head from "next/head";
+import "../styles/style.css";
 
 export default () => (
   <div>
@@ -21,7 +22,6 @@ export default () => (
         href="https://fonts.googleapis.com/css?family=Nunito"
         rel="stylesheet"
       />
-      <script src="../scripts/script.js" />
     </Head>
     <header>
       <i className="menu material-icons">menu</i>
