@@ -1,9 +1,9 @@
 import { getAllBlog } from "../helpers/firebase";
-import Page from "../layouts/main";
+import MainLayout from "../layouts/MainLayout";
 import ArticleTile from "../components/ArticleTile";
 
 const Home = props => (
-  <Page>
+  <MainLayout>
     <div className="hero">
       <h2>Financial Information at your fingertips!</h2>
       <h4>
@@ -16,7 +16,7 @@ const Home = props => (
         <ArticleTile blog={blog} key={blog.url} />
       ))}
     </ul>
-  </Page>
+  </MainLayout>
 );
 
 Home.getInitialProps = async () => {

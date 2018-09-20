@@ -1,4 +1,4 @@
-import Page from "../layouts/main";
+import MainLayout from "../../layouts/MainLayout";
 import React, { PureComponent } from "react";
 import { login } from "../../helpers/firebase";
 import Router from "next/router";
@@ -17,7 +17,7 @@ export default class Login extends PureComponent {
 
   render() {
     return (
-      <Page>
+      <MainLayout>
         <form>
           <div
             style={{
@@ -48,7 +48,7 @@ export default class Login extends PureComponent {
             <input type="button" value="Login" onClick={this.login} />
           </div>
         </form>
-      </Page>
+      </MainLayout>
     );
   }
 }
