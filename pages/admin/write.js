@@ -1,5 +1,5 @@
 import WriteArticle from "../../components/WriteArticle";
-import Page from "../layouts/main";
+import MainLayout from "../../layouts/MainLayout";
 import { isLoggedIn, logOut } from "../../helpers/firebase";
 import Router from "next/router";
 
@@ -10,9 +10,9 @@ export default () => {
     }
   });
   return (
-    <Page>
+    <MainLayout>
       <WriteArticle />
       <input type="button" value="Logout" onClick={() => logOut()} />
-    </Page>
+    </MainLayout>
   );
 };

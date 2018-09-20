@@ -3,11 +3,11 @@ import ArticleFull from "../components/ArticleFull";
 import { customReplace } from "../helpers/customReplace";
 import Router from "next/router";
 
-import Page from "./layouts/main";
+import MainLayout from "../layouts/MainLayout";
 
 const Blog = ({ blog }) => {
   return (
-    <Page>
+    <MainLayout>
       <ArticleFull blog={blog} />
       <button
         onClick={() => {
@@ -22,7 +22,7 @@ const Blog = ({ blog }) => {
       >
         Delete Blog
       </button>
-    </Page>
+    </MainLayout>
   );
 };
 
