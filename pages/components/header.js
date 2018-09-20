@@ -1,4 +1,5 @@
-import Head from 'next/head';
+import Head from "next/head";
+import "../styles/style.css";
 
 export default () => (
   <div>
@@ -6,6 +7,7 @@ export default () => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
       <title>Dhukutee.com</title>
+      <link rel="stylesheet" href="/_next/static/style.css" />
       <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet"
