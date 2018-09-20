@@ -1,13 +1,27 @@
-import { getABlog } from '../helpers/firebase';
-import ArticleFull from '../components/ArticleFull';
-import { customReplace } from '../helpers/customReplace';
+import { getABlog, deleteABlog } from "../helpers/firebase";
+import ArticleFull from "../components/ArticleFull";
+import { customReplace } from "../helpers/customReplace";
+import Router from "next/router";
 
-import Page from './layouts/main';
+import Page from "./layouts/main";
 
-const Blog = props => {
+const Blog = ({ blog }) => {
   return (
     <Page>
-      <ArticleFull blog={props.blog} />
+      <ArticleFull blog={blog} />
+      <button
+        onClick={() => {
+          deleteABlog(blog.url)
+            .then(res => {
+              Router.push(`/`);
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }}
+      >
+        Delete Blog
+      </button>
     </Page>
   );
 };
