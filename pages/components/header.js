@@ -23,7 +23,6 @@ export default () => (
         href="https://fonts.googleapis.com/css?family=Nunito"
         rel="stylesheet"
       />
-      <script src="../scripts/script.js" />
     </Head>
     <header>
       <i className="menu material-icons">menu</i>
