@@ -3,7 +3,7 @@ import ArticleFull from "../components/ArticleFull";
 import { customReplace } from "../helpers/customReplace";
 import Router from "next/router";
 
-import Page from "./layouts/main";
+import Page from "../layouts/main";
 
 const Blog = ({ blog }) => {
   return (
