@@ -7,7 +7,9 @@ import Router from "next/router";
 export default class WriteArticle extends PureComponent {
   async componentWillMount() {
     const { blog } = this.props;
-    if (this.props.blog) {
+    if(this.props.blog==null && !this.props.isNew){
+      Router.push("/admin");
+    } else if (this.props.blog !=null) {
       this.setState({
         url: blog.url,
         title: blog.title,
@@ -18,8 +20,6 @@ export default class WriteArticle extends PureComponent {
         image_url: await getDownloadUrl(blog.image_reference),
         image_reference: blog.image_reference
       });
-    } else if (!this.props.new) {
-      Router.push("/admin");
     }
   }
 
