@@ -17,16 +17,20 @@ const Write = ({ blog, isNew }) => {
   );
 };
 
-Write.getInitialProps = async ({ query }) => {
+Write.getInitialProps = async ({ query, req, res }) => {
   var blog = null;
-  var isNew =false;
+  var isNew = false;
 
-  if(query.slug == null){
-    isNew = true
+  if (query.slug == null) {
+    isNew = true;
   } else {
-    blog = await getABlog(query.slug)
+    blog = await getABlog(query.slug);
+    if (blog == null) {
+      res.writeHead(303, { Location: "/admin" });
+      res.end()
+    }
   }
-    
+
   return { blog, isNew };
 };
 

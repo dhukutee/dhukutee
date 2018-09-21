@@ -7,18 +7,24 @@ import Router from "next/router";
 export default class WriteArticle extends PureComponent {
   async componentWillMount() {
     const { blog } = this.props;
-    if(this.props.blog==null && !this.props.isNew){
+    if (this.props.blog == null && !this.props.isNew) {
       Router.push("/admin");
-    } else if (this.props.blog !=null) {
+    } else if (this.props.blog != null) {
       this.setState({
         url: blog.url,
         title: blog.title,
         raw_message: blog.message,
-        message: await customReplace(blog.message),
-        icon_url: await getDownloadUrl(blog.icon_reference),
         icon_reference: blog.icon_reference,
-        image_url: await getDownloadUrl(blog.image_reference),
         image_reference: blog.image_reference
+      });
+      this.setState({
+        message: await customReplace(blog.message)
+      });
+      this.setState({
+        icon_url: await getDownloadUrl(blog.icon_reference)
+      });
+      this.setState({
+        image_url: await getDownloadUrl(blog.image_reference)
       });
     }
   }
