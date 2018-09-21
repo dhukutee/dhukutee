@@ -18,8 +18,8 @@ export default class WriteArticle extends PureComponent {
         image_url: await getDownloadUrl(blog.image_reference),
         image_reference: blog.image_reference
       });
-    } else {
-      Router.push("/admin")
+    } else if (!this.props.new) {
+      Router.push("/admin");
     }
   }
 

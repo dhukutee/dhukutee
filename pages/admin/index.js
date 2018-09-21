@@ -10,6 +10,13 @@ import ArticleTile from "../../components/ArticleTile";
 
 const AdminPage = props => (
   <MainLayout>
+    <button
+      onClick={() => {
+        Router.push("/admin/write");
+      }}
+    >
+      Write a new Blog
+    </button>
     <ul className="choices">
       {props.blogs.map(blog => (
         <div className="adminList" key={blog.url}>
