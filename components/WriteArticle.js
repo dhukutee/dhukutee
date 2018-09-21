@@ -5,6 +5,25 @@ import { addABlog, uploadFile, getDownloadUrl } from "../helpers/firebase";
 import Router from "next/router";
 
 export default class WriteArticle extends PureComponent {
+  async componentWillMount() {
+    const { blog } = this.props;
+    if (this.props.blog) {
+      this.setState({
+        url: blog.url,
+        title: blog.title,
+        raw_message: blog.message,
+        message: await customReplace(blog.message),
+        icon_url: await getDownloadUrl(blog.icon_reference),
+        icon_reference: blog.icon_reference,
+        image_url: await getDownloadUrl(blog.image_reference),
+        image_reference: blog.image_reference
+      });
+    } else {
+      Router.push("/admin")
+    }
+  }
+
+  renderExistingData() {}
   state = {
     url: "",
     title: "",
@@ -85,6 +104,7 @@ export default class WriteArticle extends PureComponent {
             <input
               type="text"
               id="url"
+              value={this.state.url}
               onChange={event => {
                 this.setState({
                   url: event.target.value
@@ -98,6 +118,7 @@ export default class WriteArticle extends PureComponent {
             <input
               type="text"
               id="title"
+              value={this.state.title}
               onChange={event => {
                 this.setState({
                   title: event.target.value
@@ -159,6 +180,7 @@ export default class WriteArticle extends PureComponent {
             <br />
             <textarea
               id="detail"
+              value={this.state.raw_message}
               onChange={async event => {
                 this.setState({
                   raw_message: event.target.value,
