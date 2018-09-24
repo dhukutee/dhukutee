@@ -57,7 +57,7 @@ export default class WriteArticle extends PureComponent {
         image_reference: this.state.image_reference
       })
         .then(() => {
-          Router.push(`/blogs/${this.state.url}`);
+          Router.push(`/${this.state.url}`);
         })
         .catch(err => {
           console.log(err);

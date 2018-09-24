@@ -22,7 +22,7 @@ export default class ArticleTile extends PureComponent {
     return (
       <li
         onClick={() => {
-          Router.push(`/blogs/${blog.url}`)
+          Router.push(`/${blog.url}`)
         }}
       >
         <img src={this.state.icon_url} height='60' />
