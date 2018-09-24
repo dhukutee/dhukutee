@@ -21,7 +21,7 @@ export function addABlog(blog) {
   return firebase
     .database()
     .ref("blogs")
-    .push()
+    .child(blog.url.replace("/", "_"))
     .set(blog);
 }
 
@@ -38,8 +38,7 @@ export function getABlog(slug) {
   return firebase
     .database()
     .ref("blogs")
-    .orderByChild("url")
-    .equalTo(slug)
+    .child(slug.replace("/", "_"))
     .once("value")
     .then(function(snapshot) {
       return snapshot.val();
