@@ -1,9 +1,9 @@
 import WriteArticle from "../../components/WriteArticle";
 import MainLayout from "../../layouts/MainLayout";
-import { isLoggedIn, logOut } from "../../helpers/firebase";
+import { isLoggedIn, logOut, getABlog } from "../../helpers/firebase";
 import Router from "next/router";
 
-export default () => {
+const Write = ({ blog, isNew }) => {
   isLoggedIn(user => {
     if (!user) {
       Router.push("/admin/login");
@@ -11,8 +11,27 @@ export default () => {
   });
   return (
     <MainLayout>
-      <WriteArticle />
+      <WriteArticle blog={blog} isNew={isNew} />
       <input type="button" value="Logout" onClick={() => logOut()} />
     </MainLayout>
   );
 };
+
+Write.getInitialProps = async ({ query, req, res }) => {
+  var blog = null;
+  var isNew = false;
+
+  if (query.slug == null) {
+    isNew = true;
+  } else {
+    blog = await getABlog(query.slug);
+    if (blog == null) {
+      res.writeHead(303, { Location: "/admin" });
+      res.end()
+    }
+  }
+
+  return { blog, isNew };
+};
+
+export default Write;

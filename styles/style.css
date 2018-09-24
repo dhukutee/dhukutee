@@ -177,6 +177,11 @@ ul.choices {
 	padding: 0;
 }
 
+.adminList {
+	margin: 0 50px;
+	justify-content: center;
+}
+
 ul.choices li {
 	display: flex;
 	flex-direction: column;

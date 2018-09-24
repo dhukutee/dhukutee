@@ -9,19 +9,6 @@ const Blog = ({ blog }) => {
   return (
     <MainLayout>
       <ArticleFull blog={blog} />
-      <button
-        onClick={() => {
-          deleteABlog(blog.url)
-            .then(res => {
-              Router.push(`/`);
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        }}
-      >
-        Delete Blog
-      </button>
     </MainLayout>
   );
 };

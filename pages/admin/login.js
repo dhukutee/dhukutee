@@ -11,7 +11,7 @@ export default class Login extends PureComponent {
 
   login = event => {
     login(this.state.email, this.state.password)
-      .then(user => Router.push("/admin/write"))
+      .then(user => Router.push("/admin"))
       .catch(err => console.log(err));
   };
 
