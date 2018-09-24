@@ -18,7 +18,7 @@ Blog.getInitialProps = async ({ query }) => {
   const blog = await getABlog(query.slug);
 
   //fillin the dynamic data
-  blog.message = await customReplace(blog.message);
+  if (!blog) blog.message = await customReplace(blog.message);
   return { blog };
 };
 

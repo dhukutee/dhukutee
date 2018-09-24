@@ -20,7 +20,8 @@ if (!firebase.apps.length) {
 export function addABlog(blog) {
   return firebase
     .database()
-    .ref("blogs/" + blog.url)
+    .ref("blogs")
+    .child(blog.url.replace("/", "_"))
     .set(blog);
 }
 
@@ -36,7 +37,8 @@ export function deleteABlog(slug) {
 export function getABlog(slug) {
   return firebase
     .database()
-    .ref("blogs/" + slug)
+    .ref("blogs")
+    .child(slug.replace("/", "_"))
     .once("value")
     .then(function(snapshot) {
       return snapshot.val();

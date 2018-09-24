@@ -1,6 +1,6 @@
 import Router from "next/router";
 
-import { getAllBlog, isLoggedIn, deleteABlog } from "../../helpers/firebase";
+import { getAllBlog, isLoggedIn, deleteABlog, logOut } from "../../helpers/firebase";
 import MainLayout from "../../layouts/MainLayout";
 import ArticleTile from "../../components/ArticleTile";
 
@@ -43,6 +43,8 @@ const AdminPage = props => {
           </div>
         ))}
       </ul>
+
+      <input type="button" value="Logout" onClick={() => logOut()} />
     </MainLayout>
   );
 };

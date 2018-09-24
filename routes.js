@@ -1,8 +1,10 @@
 const routes = require("next-routes");
 
 module.exports = routes()
-  .add("write")
-  .add("login")
-  .add("admin", "/admin/")
-  .add("admin/write", "/admin/write/:slug")
-  .add("blogs", "/blogs/:slug");
+  .add("home", "/", "index")
+  .add("admin", "/admin", "admin/index")
+  .add("login", "/admin/login", "admin/login")
+  .add("write", "/admin/write", "admin/write")
+  .add("edit", "/admin/write/:slug", "admin/write")
+  .add("index", "/blogs")
+  .add("blogs", "/:slug*");

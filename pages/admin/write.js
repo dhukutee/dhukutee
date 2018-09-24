@@ -1,6 +1,6 @@
 import WriteArticle from "../../components/WriteArticle";
 import MainLayout from "../../layouts/MainLayout";
-import { isLoggedIn, logOut, getABlog } from "../../helpers/firebase";
+import { isLoggedIn, getABlog } from "../../helpers/firebase";
 import Router from "next/router";
 
 const Write = ({ blog, isNew }) => {
@@ -12,7 +12,6 @@ const Write = ({ blog, isNew }) => {
   return (
     <MainLayout>
       <WriteArticle blog={blog} isNew={isNew} />
-      <input type="button" value="Logout" onClick={() => logOut()} />
     </MainLayout>
   );
 };
@@ -27,7 +26,7 @@ Write.getInitialProps = async ({ query, req, res }) => {
     blog = await getABlog(query.slug);
     if (blog == null) {
       res.writeHead(303, { Location: "/admin" });
-      res.end()
+      res.end();
     }
   }
 
