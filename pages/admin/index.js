@@ -7,7 +7,7 @@ import ArticleTile from "../../components/ArticleTile";
 const AdminPage = props => {
   isLoggedIn(user => {
     if (!user) {
-      Router.push("/admin/login");
+      Router.replace("/admin/login");
     }
   });
 

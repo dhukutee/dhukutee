@@ -7,7 +7,7 @@ import Router from "next/router";
 export default class WriteArticle extends PureComponent {
   async componentWillMount() {
     const { blog } = this.props;
-    if (blog != null) {
+    if (blog) {
       this.setState({
         url: blog.url,
         title: blog.title,
