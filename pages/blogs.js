@@ -17,10 +17,6 @@ Blog.getInitialProps = async ({ query }) => {
   //fetching the blog data from database before  rendering the screen
   const blog = await getABlog(query.slug);
 
-  console.log("aacha");
-  console.log(query.slug);
-  console.log(blog);
-
   //fillin the dynamic data
   if (!blog) blog.message = await customReplace(blog.message);
   return { blog };
