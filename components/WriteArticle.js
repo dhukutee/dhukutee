@@ -46,6 +46,8 @@ export default class WriteArticle extends PureComponent {
       alert("Content is empty");
     } else if (this.state.url == "" || this.state.url == null) {
       alert("URL is empty");
+    } else if (this.state.url.includes(" ")) {
+      alert("Url cannot contain spaces");
     } else {
       addABlog({
         url: this.state.url,
@@ -104,7 +106,7 @@ export default class WriteArticle extends PureComponent {
             <hr />
             URL:
             <br />
-            https://dhukutee.com/blogs/
+            https://dhukutee.com/
             <input
               type="text"
               id="url"
