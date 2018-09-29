@@ -18,8 +18,8 @@ export default class ArticleFull extends PureComponent {
       this.getImageUrl(new_props.blog.image_reference);
     }
   }
-  
-  async componentDidMount(){
+
+  async componentDidMount() {
     this.setState({
       image_url: await getDownloadUrl(this.props.blog.image_reference)
     });
@@ -38,7 +38,7 @@ export default class ArticleFull extends PureComponent {
         <img
           src={this.state.image_url}
           style={styles.featuredImage}
-          width="50%"
+          width="100%"
         />
         <p>{renderHTML(this.props.blog.message)}</p>
       </div>
