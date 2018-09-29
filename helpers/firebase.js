@@ -86,6 +86,27 @@ export async function getValueAt(path) {
   return snapshot.val();
 }
 
+export async function getTree() {
+  const snapshot = await firebase
+    .database()
+    .ref("should_render")
+    .once("value");
+
+  let roots = snapshot.val();
+
+  let res = {};
+  await Promise.all(
+    roots.map(async root => {
+      let snap = await firebase
+        .database()
+        .ref(root)
+        .once("value");
+      res[root] = snap.val();
+    })
+  );
+  return res;
+}
+
 export function login(email, password) {
   return firebase.auth().signInWithEmailAndPassword(email, password);
 }

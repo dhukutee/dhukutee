@@ -1,7 +1,9 @@
+import Router from "next/router";
+
 import WriteArticle from "../../components/WriteArticle";
 import MainLayout from "../../layouts/MainLayout";
 import { isLoggedIn, getABlog } from "../../helpers/firebase";
-import Router from "next/router";
+import DataTree from "../../components/DataTree";
 
 const Write = ({ blog, isNew }) => {
   isLoggedIn(user => {
@@ -12,6 +14,7 @@ const Write = ({ blog, isNew }) => {
   return (
     <MainLayout>
       <WriteArticle blog={blog} isNew={isNew} />
+      <DataTree />
     </MainLayout>
   );
 };
