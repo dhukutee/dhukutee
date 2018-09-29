@@ -4,7 +4,7 @@ import { getTree } from '../helpers/firebase';
 
 class DataTree extends Component {
   
-  state = {tree: {}}
+  state = {tree: null}
 
   async componentDidMount() {
     let tree = await getTree();
@@ -32,7 +32,7 @@ class DataTree extends Component {
         <h1>Data Schema for Database</h1>
         <pre>
           <code className="json" ref="code">
-            {JSON.stringify(this.state.tree, null, 2)}
+            {this.state.tree?  JSON.stringify(this.state.tree, null, 2):"Loading......"}
           </code>
         </pre>
       </div>
