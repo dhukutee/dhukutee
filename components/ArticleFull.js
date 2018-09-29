@@ -8,23 +8,21 @@ export default class ArticleFull extends PureComponent {
   };
 
   async getImageUrl(image_ref) {
+    console.log("fetching new one");
     this.setState({
       image_url: await getDownloadUrl(image_ref)
     });
   }
 
   componentWillReceiveProps(new_props) {
-    if (
-      this.props.blog.image_reference &&
-      this.props.blog.image_reference != new_props.blog.image_reference
-    ) {
+    console.log(this.props.blog.image_reference);
+    console.log(new_props.blog.image_reference);
+    if (this.props.blog.image_reference != new_props.blog.image_reference) {
       this.getImageUrl(new_props.blog.image_reference);
     }
   }
 
   render() {
-    console.log(this.props.blog);
-
     return (
       <div
         style={{
